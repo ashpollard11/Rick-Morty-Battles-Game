@@ -19,8 +19,11 @@ let BattleComponent = Vue.component("battle", {
 					</li>
 				</ul>
 			</div>
-			<blockquote v-if="playerSelect">
-				{{playerSelect}}
+			<blockquote v-if="selectingPlayer">
+				Player {{selectingPlayer}}, Select A Character
+			</blockquote>
+			<blockquote v-else-if="count === 8">
+				Ready To Battle?
 			</blockquote>
 			<section class="bottom">
 				<ul>
@@ -43,41 +46,57 @@ let BattleComponent = Vue.component("battle", {
 	data: function() {
 		return {
 			previewCharacter: null,
-			playerSelect: "Player 1, Choose A Character",
 			player1Characters: [],
-			player2Characters: []
+			player2Characters: [],
+			count: 1,
+			selectingPlayer: 1
 		}
 	},
 	// created: function() {
+		
 	// },
 	methods: {
+		isEven: function(number) {
+		     return number % 2 === 0;
+		},
+
 		confirmCharacter: function(character) {
 			if (character.used) return;
 			console.log('confirm character', character)
-			Vue.set(character, "used", true);
 			console.log(this.previewCharacter)
+			Vue.set(character, "used", true);
 			this.previewCharacter = null;
-			this.addCharacter(character)
+			if (this.count <= 8) {
+				this.addCharacter(character)
+				this.playerSelect()
+			}
 		},
 
 		addCharacter: function(pickedCharacter) {
-			let p1 = 1;
-			let p2 = 2;
-			if (this.player1Characters.length === this.player2Characters.length) {
-				this.player1Characters.push(pickedCharacter)
-				this.playerSelect = "Player " + p1 + ", Choose A Character"
-				console.log(this.playerSelect)
-				console.log(this.player1Characters.length)
-			} else if (this.player1Characters.length > this.player2Characters.length) {
+			let odd = this.isEven(this.count);
+			if (odd) {
 				this.player2Characters.push(pickedCharacter)
-				this.playerSelect = "Player " + p2 + ", Choose A Character"
-				console.log(this.playerSelect)
-			} 
-			// else if (this.player1Characters.length + this.player2Characters.length  = 8) {
-		 // 		console.log('no more!')
-		 // 		this.playerSelect = "Ready To Battle?"
-		 // 		console.log(this.playerSelect)
-	 	// 	}
+			} else if (!odd) {
+				this.player1Characters.push(pickedCharacter)
+			}
+		},
+
+		playerSelect: function() {
+			let odd = this.isEven(this.count);
+			if (odd) {
+				console.log(odd)
+				this.count++;
+				this.selectingPlayer = 1
+			} else if (!odd) {
+				this.count++;
+				this.selectingPlayer = 2
+			}
+			console.log(this.count);
+			// if (odd) {
+			// this.playerSelect = `Player ${p1}, Choose A Character`; }
+			// else {
+			// this.playerSelect = `Player ${p2}, Choose A Character`; }
+			
 		}
 	}
 })
