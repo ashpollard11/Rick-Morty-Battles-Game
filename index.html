@@ -13,15 +13,20 @@
 	<body>
 		<div id="app">
 
-			<router-view v-bind:characters="characters"></router-view>
+			<router-view
+				v-bind:characters="characters">
+			</router-view>
+			<!-- v-bind:player1="player1"
+				v-bind:player2="player2" -->
 
 		</div>
 		
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.min.js"></script>
-		<script src="dist/js/HomeComponent.js"></script>
+		<script src="dist/js/homeComponent.js"></script>
 		<script src="dist/js/battleComponent.js"></script>
+		<script src="dist/js/VersusComponent.js"></script>
 		<script src="dist/js/main.js"></script>
 
 	</body>

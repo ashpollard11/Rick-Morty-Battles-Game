@@ -42,7 +42,6 @@ body {
 				order: unset;
 			}
 		}
-
 	}
 
 
@@ -90,6 +89,17 @@ body {
 		img {
 			width: 100%;
 		}
+	}
+}
+
+blockquote {
+	background: rgba(203, 33, 33, 0.7);
+	padding: 1.8em;
+	
+
+	&.is-active {
+		background: rgba(58, 203, 33, 0.7);
+		cursor: pointer;
 	}
 }
 

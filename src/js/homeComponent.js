@@ -1,5 +1,4 @@
 
-
 let HomeComponent = Vue.component("home", {
 	template: 
 		`<div class="container" ref="container">

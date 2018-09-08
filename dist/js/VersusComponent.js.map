@@ -1,0 +1,1 @@
+{"version":3,"sources":["VersusComponent.js"],"names":["VersusComponent","Vue","component","template"],"mappings":";;AACA,IAAIA,kBAAkBC,IAAIC,SAAJ,CAAc,QAAd,EAAwB;AAC7CC;AAD6C,CAAxB,CAAtB","file":"VersusComponent.js","sourcesContent":["\nlet VersusComponent = Vue.component(\"versus\", {\n\ttemplate: \n\t\t`<div class=\"container\" ref=\"container\">\n\t\t\t\n\t\t</div>`,\n})"]}

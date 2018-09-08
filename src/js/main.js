@@ -4,6 +4,7 @@ const router = new VueRouter({
   	routes: [
 		{ path: '/', component: HomeComponent },
 		{ path: '/battle', component: BattleComponent }
+		{ path: '/versus', component: VersusComponent }
 	]	// routes  short for `routes: routes`
 })
 
@@ -15,7 +16,9 @@ var app = new Vue({
 	el: '#app' ,
 	router: router,
 	data: {
-		characters: []
+		characters: [],
+		player1Characters: '',
+		player2Characters: '',
 	},
 	// watch: {
 	// 	hashtag: function() {
@@ -69,6 +72,11 @@ var app = new Vue({
 					console.warn('oh non: ', erreur)
 				})
 				
+		}
+		playerDataFromBattleComponent: function(newp1, newp2) {
+			console.log("players complete: " newp1, newp2)
+			// player1Characters = newp1
+			// player2Characters = newp2
 		}
 	}
 })

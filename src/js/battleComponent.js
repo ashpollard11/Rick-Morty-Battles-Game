@@ -1,4 +1,5 @@
 
+
 let BattleComponent = Vue.component("battle", {
 	props: ["characters"],
 	template: 
@@ -6,7 +7,7 @@ let BattleComponent = Vue.component("battle", {
 			<div class="player player-1">
 				<h3>Player 1</h3>
 				<ul>
-					<li v-for="character in player1Characters">
+					<li v-for="character in player1">
 						<img v-bind:src="character.image" alt="rick and morty character">
 					</li>
 				</ul>
@@ -14,16 +15,16 @@ let BattleComponent = Vue.component("battle", {
 			<div class="player player-2">
 				<h3>Player 2</h3>
 				<ul>
-					<li v-for="character in player2Characters">
+					<li v-for="character in player2">
 						<img v-bind:src="character.image" alt="rick and morty character">
 					</li>
 				</ul>
 			</div>
-			<blockquote v-if="selectingPlayer">
+			<blockquote v-if="selectingPlayer && count <=8">
 				Player {{selectingPlayer}}, Select A Character
 			</blockquote>
-			<blockquote v-else-if="count === 8">
-				Ready To Battle?
+			<blockquote v-else-if="selectingPlayer && count === 9" class="is-active">
+				<router-link to="/versus" @click="$emit('selectionComplete')" class="go">Ready To Battle?</router-link>
 			</blockquote>
 			<section class="bottom">
 				<ul>
@@ -46,8 +47,8 @@ let BattleComponent = Vue.component("battle", {
 	data: function() {
 		return {
 			previewCharacter: null,
-			player1Characters: [],
-			player2Characters: [],
+			player1: [],
+			player2: [],
 			count: 1,
 			selectingPlayer: 1
 		}
@@ -75,9 +76,9 @@ let BattleComponent = Vue.component("battle", {
 		addCharacter: function(pickedCharacter) {
 			let odd = this.isEven(this.count);
 			if (odd) {
-				this.player2Characters.push(pickedCharacter)
+				this.player2.push(pickedCharacter)
 			} else if (!odd) {
-				this.player1Characters.push(pickedCharacter)
+				this.player1.push(pickedCharacter)
 			}
 		},
 
@@ -96,6 +97,11 @@ let BattleComponent = Vue.component("battle", {
 			// this.playerSelect = `Player ${p1}, Choose A Character`; }
 			// else {
 			// this.playerSelect = `Player ${p2}, Choose A Character`; }
+			
+		},
+
+		selectionComplete: function() {
+			console.log("player selection is complete: ", this.player1, this.player2)
 			
 		}
 	}
