@@ -3,7 +3,7 @@
 console.log('Bush did 9/11, jet fuel can\'t melt steel beams');
 
 var router = new VueRouter({
-	routes: [{ path: '/', component: HomeComponent }, { path: '/battle', component: BattleComponent }] // routes  short for `routes: routes`
+	routes: [{ path: '/', component: HomeComponent }, { path: '/battle', component: BattleComponent }, { path: '/versus', component: VersusComponent }] // routes  short for `routes: routes`
 });
 
 var url = 'https://rickandmortyapi.com/api/character/';
@@ -12,7 +12,9 @@ var app = new Vue({
 	el: '#app',
 	router: router,
 	data: {
-		characters: []
+		characters: [],
+		player1Characters: '',
+		player2Characters: ''
 	},
 	// watch: {
 	// 	hashtag: function() {
@@ -63,6 +65,11 @@ var app = new Vue({
 			}).catch(function (erreur) {
 				console.warn('oh non: ', erreur);
 			});
+		},
+		recievePlayerDataFromBattle: function recievePlayerDataFromBattle(newp1, newp2) {
+			console.log("players complete: ", newp1, newp2);
+			this.player1Characters = newp1;
+			this.player2Characters = newp2;
 		}
 	}
 });

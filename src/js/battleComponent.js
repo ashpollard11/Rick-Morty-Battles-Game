@@ -24,7 +24,7 @@ let BattleComponent = Vue.component("battle", {
 				Player {{selectingPlayer}}, Select A Character
 			</blockquote>
 			<blockquote v-else-if="selectingPlayer && count === 9" class="is-active">
-				<router-link to="/versus" @click="$emit('selectionComplete')" class="go">Ready To Battle?</router-link>
+				<router-link to="/versus" v-on="playerdatafrombattle='recievePlayerDataFromBattle'" class="go">Ready To Battle?</router-link>
 			</blockquote>
 			<section class="bottom">
 				<ul>
@@ -70,6 +70,10 @@ let BattleComponent = Vue.component("battle", {
 			if (this.count <= 8) {
 				this.addCharacter(character)
 				this.playerSelect()
+			}
+			if (this.count === 9) {
+				this.selectionComplete()
+				this.$emit('playerdatafrombattle', this.player1, this.player2)
 			}
 		},
 
