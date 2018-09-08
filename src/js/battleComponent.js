@@ -24,7 +24,7 @@ let BattleComponent = Vue.component("battle", {
 				Player {{selectingPlayer}}, Select A Character
 			</blockquote>
 			<blockquote v-else-if="selectingPlayer && count === 9" class="is-active">
-				<router-link to="/versus" v-on="playerdatafrombattle='recievePlayerDataFromBattle'" class="go">Ready To Battle?</router-link>
+				<router-link to="/versus" class="go">Ready To Battle?</router-link>
 			</blockquote>
 			<section class="bottom">
 				<ul>

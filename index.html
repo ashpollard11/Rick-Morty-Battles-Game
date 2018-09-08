@@ -14,7 +14,8 @@
 		<div id="app">
 
 			<router-view
-				v-bind:characters="characters">
+				v-bind:characters="characters"
+				v-on="playerdatafrombattle='recievePlayerDataFromBattle'">
 			</router-view>
 			<!-- v-bind:player1="player1"
 				v-bind:player2="player2" -->
