@@ -15,10 +15,11 @@
 
 			<router-view
 				v-bind:characters="characters"
-				v-on="playerdatafrombattle='recievePlayerDataFromBattle'">
+				@playerdatafrombattle="recievePlayerDataFromBattle"
+				v-bind:player1characters="player1characters"
+				v-bind:player2characters="player2characters">
 			</router-view>
-			<!-- v-bind:player1="player1"
-				v-bind:player2="player2" -->
+			
 
 		</div>
 		

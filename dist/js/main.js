@@ -13,8 +13,8 @@ var app = new Vue({
 	router: router,
 	data: {
 		characters: [],
-		player1Characters: '',
-		player2Characters: ''
+		player1characters: '',
+		player2characters: ''
 	},
 	// watch: {
 	// 	hashtag: function() {
@@ -68,8 +68,8 @@ var app = new Vue({
 		},
 		recievePlayerDataFromBattle: function recievePlayerDataFromBattle(newp1, newp2) {
 			console.log("players complete: ", newp1, newp2);
-			this.player1Characters = newp1;
-			this.player2Characters = newp2;
+			this.player1characters = newp1;
+			this.player2characters = newp2;
 		}
 	}
 });
