@@ -1,7 +1,7 @@
 /* 
 ==============================================
-CONTENT:	Project Name Here
-AUTHOR:		Your Name Here
+CONTENT:	Rick & Morty Battles
+AUTHOR:		Ashley Pollard
 ==============================================
 
 TABLE OF CONTENTS:
@@ -17,6 +17,7 @@ TABLE OF CONTENTS:
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy|Oswald");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -75,47 +76,222 @@ table {
 body {
 	background: #000;
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	color: #fff;
+	font-family: "Oswald", sans-serif;
+	font-size: 18px;
 }
 
 @media only screen and (min-width: 768px) {
 	body .container {
 		flex-flow: row wrap;
 	}
-	body .player {
-		width: 50%;
+	body .container .player {
+		width: 49%;
+		max-width: 402px;
 	}
-	body .player.player-1, body .player.player-2 {
+	body .container .player.player-1, body .container .player.player-2 {
 		order: unset;
 	}
+	body .container .player.player-1 {
+		margin: 0 1% 0 0;
+		border-right: 1px solid rgba(110, 205, 0, 0.4);
+	}
+	body .container .player.player-2 {
+		margin-top: unset;
+	}
+	body .container blockquote {
+		width: 90%;
+		max-width: 815px;
+	}
+	body .container .bottom {
+		max-width: 442px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	body .container .player {
+		max-width: 660px;
+	}
+	body .container .player.player-1 {
+		margin: 0 1% 0 0;
+	}
+	body .container blockquote {
+		width: 90%;
+		max-width: 960px;
+	}
+}
+
+h1, .go {
+	font-family: "Luckiest Guy", cursive;
+}
+
+h1 {
+	color: #6ecd00;
+	font-size: 46px;
+}
+
+h2 {
+	font-size: 25px;
 }
 
 /* 2. Content ================================= */
 .container {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	background: url(../../dist/img/rm-bg.jpg) no-repeat center;
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.6);
+	background-blend-mode: multiply;
+	padding: 1em;
+}
+
+.container .go {
+	width: 100%;
+	background: #fff;
+	padding: 11px;
+	font-size: 27px;
+	text-decoration: none;
+	color: black;
+	margin-top: auto;
+	margin-bottom: 25px;
+	transition: 0.5s;
+	margin-top: 25px;
+	border-radius: 10px;
+}
+
+.container .go:hover {
+	color: #6ecd00;
+}
+
+.container.home-cont {
+	padding: 0em;
+}
+
+.container.home-cont section {
+	animation: ani-glow 1.5s infinite;
+	width: 90%;
+	max-width: 545px;
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.container.home-cont section h1 {
+	padding-bottom: 10px;
+}
+
+.container.battle-cont {
+	background-color: rgba(0, 0, 0, 0.9);
+}
+
+.container.versus-cont {
+	background-color: rgba(0, 0, 0, 0.9);
+	flex-direction: row;
+	align-items: flex-end;
+}
+
+.container.versus-cont h1, .container.versus-cont .go {
+	position: absolute;
+	text-align: center;
+}
+
+.container.versus-cont h1 {
+	top: 5%;
+	opacity: 0;
+	animation: ani-opacity 2.5s forwards;
+	animation-delay: 1.2s;
+	font-size: 50px;
+}
+
+.container.versus-cont .go {
+	top: 15%;
+	width: 60%;
+	max-width: 283px;
+	padding-top: 16px;
+	opacity: 0;
+	animation: ani-opacity 2.5s forwards;
+	animation-delay: 2.5s;
+}
+
+.container.versus-cont .player {
+	width: unset;
+	max-width: unset;
+}
+
+.container.versus-cont .player h3 {
+	display: none;
+}
+
+.container.versus-cont .player ul {
+	display: flex;
+	flex-direction: column;
+	transform: unset;
+}
+
+.container.versus-cont .player ul li {
+	width: 47%;
+}
+
+.container.versus-cont .player ul li img {
+	width: 196%;
+	max-width: 140px;
+	margin-bottom: 10px;
+}
+
+.container.versus-cont .player.player-1 {
+	margin-bottom: unset;
+	border-right: unset;
+}
+
+.container.versus-cont .player.player-1 img {
+	animation: ani-battle1 2s forwards;
+}
+
+.container.versus-cont .player.player-1 img.winnerArray1 {
+	animation: ani-battle1-winner 2s forwards;
+}
+
+.container.versus-cont .player.player-2 {
+	margin-top: unset;
+}
+
+.container.versus-cont .player.player-2 img {
+	animation: ani-battle2 2s forwards;
+}
+
+.container.versus-cont .player.player-2 img.winnerArray1 {
+	animation: ani-battle2-winner 2s forwards;
 }
 
 .player {
 	width: 100%;
+	max-width: 360px;
 	height: 30%;
+	text-align: center;
 }
 
 .player.player-1 {
 	order: -1;
-}
-
-.player.player-1 ul {
-	transform: scale(-1);
+	margin-bottom: 10px;
 }
 
 .player.player-2 {
 	order: 1;
+	margin-top: 10px;
+}
+
+.player h3 {
+	margin-bottom: 10px;
 }
 
 .player ul {
@@ -124,24 +300,58 @@ body {
 
 .player li {
 	width: 23%;
+	margin-right: 2%;
 }
 
 .player li img {
 	width: 100%;
+	border-radius: 5px;
+}
+
+.player, blockquote {
+	text-transform: uppercase;
 }
 
 blockquote {
 	background: rgba(203, 33, 33, 0.7);
-	padding: 1.8em;
+	padding: 1em;
+	order: -2;
+	top: 15px;
+	font-size: 20px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	animation: ani-glow 1.5s infinite;
+	text-align: center;
+	transition: 0.4s;
 }
 
 blockquote.is-active {
-	background: rgba(58, 203, 33, 0.7);
 	cursor: pointer;
+	animation: ani-glow-active 1.5s infinite;
+	font-size: 50px;
+	padding: 1.3em;
+	position: absolute;
+	top: 45%;
+	z-index: 1;
+	padding: 0.9em;
+	width: 90%;
+}
+
+@media only screen and (min-width: 768px) {
+	blockquote.is-active {
+		padding: 1.2em;
+		width: 85%;
+	}
+}
+
+blockquote a {
+	color: #fff;
+	text-decoration: none;
 }
 
 .bottom {
 	width: 100%;
+	max-width: 328px;
 	height: 70%;
 	order: 0;
 }
@@ -150,11 +360,12 @@ blockquote.is-active {
 	width: 100%;
 	display: flex;
 	flex-flow: row wrap;
+	justify-content: center;
 }
 
 .bottom ul li {
 	width: 18%;
-	margin: 0 1%;
+	margin: 0 0.5% 1%;
 }
 
 .bottom ul li[disabled] {
@@ -167,35 +378,140 @@ blockquote.is-active {
 	object-fit: cover;
 	cursor: pointer;
 	transition: 0.3s;
+	border-radius: 5px;
 }
 
 .bottom ul img:hover {
 	transform: scale(1.2);
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
 }
 
 .modal {
 	position: absolute;
 	width: 70%;
-	height: 350px;
+	max-width: 280px;
 	background: rgba(0, 0, 0, 0.8);
 	border: double 4px rgba(0, 0, 0, 0.9);
 	padding: 0.8em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	border-radius: 10px;
+	line-height: 1.3;
 }
 
 .modal .close {
 	align-self: flex-end;
+	font-weight: bold;
+	padding: 3px 6px;
 }
 
 .modal img {
 	width: 68%;
 	object-fit: cover;
+	border-radius: 3px;
+	margin-bottom: 10px;
 }
 
 .modal #confirm {
 	margin-top: 1.2em;
+	width: 85%;
+	padding: 0.4em;
+	border-radius: 5px;
+	border: none;
+	font-size: 20px;
+	font-family: "Oswald", sans-serif;
+	text-transform: uppercase;
+	color: #0d8b23;
+	transition: 0.8s;
+}
+
+.modal #confirm:hover {
+	color: #ff004e;
+}
+
+audio {
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+}
+
+@keyframes ani-glow {
+	0% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #00b281;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px #6ecd00;
+	}
+	100% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #00b281;
+	}
+}
+
+@keyframes ani-glow-active {
+	0% {
+		background-color: #3acb21;
+		box-shadow: 0 0 3px #00b281;
+	}
+	50% {
+		background-color: #3acb21;
+		box-shadow: 0 0 40px #6ecd00;
+	}
+	100% {
+		background-color: #3acb21;
+		box-shadow: 0 0 3px #00b281;
+	}
+}
+
+@keyframes ani-battle1 {
+	0% {
+		transform: translateX(-100%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(0%);
+		opacity: 0;
+	}
+}
+
+@keyframes ani-battle2 {
+	0% {
+		transform: translateX(100%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(0%);
+		opacity: 0;
+	}
+}
+
+@keyframes ani-battle1-winner {
+	0% {
+		transform: translateX(-100%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes ani-battle2-winner {
+	0% {
+		transform: translateX(100%);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@keyframes ani-opacity {
+	100% {
+		opacity: 1;
+	}
 }
 
 /*# sourceMappingURL=main.css.map */
