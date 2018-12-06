@@ -107,6 +107,19 @@ body {
 	body .container .bottom {
 		max-width: 442px;
 	}
+	body .container.versus-cont .versus-inner-cont {
+		padding-bottom: 20px;
+	}
+	body .container.versus-cont h1 {
+		max-width: unset;
+	}
+	body .container.versus-cont .player ul li {
+		width: 47%;
+	}
+	body .container.versus-cont .go {
+		width: 70%;
+		top: 7%;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
@@ -136,8 +149,16 @@ h2 {
 }
 
 /* 2. Content ================================= */
+#app {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .container {
 	width: 100%;
+	max-width: 1620px;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -197,7 +218,17 @@ h2 {
 .container.versus-cont {
 	background-color: rgba(0, 0, 0, 0.9);
 	flex-direction: row;
+}
+
+.container.versus-cont .versus-inner-cont {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	align-items: flex-end;
+	width: 100%;
+	max-height: 708px;
+	min-height: 708px;
+	position: relative;
 }
 
 .container.versus-cont h1, .container.versus-cont .go {
@@ -206,16 +237,17 @@ h2 {
 }
 
 .container.versus-cont h1 {
-	top: 5%;
+	top: 0%;
 	opacity: 0;
 	animation: ani-opacity 2.5s forwards;
 	animation-delay: 1.2s;
 	font-size: 50px;
+	max-width: 345px;
 }
 
 .container.versus-cont .go {
 	top: 15%;
-	width: 60%;
+	width: 70%;
 	max-width: 283px;
 	padding-top: 16px;
 	opacity: 0;
@@ -239,11 +271,11 @@ h2 {
 }
 
 .container.versus-cont .player ul li {
-	width: 47%;
+	width: 43%;
 }
 
 .container.versus-cont .player ul li img {
-	width: 196%;
+	width: 180%;
 	max-width: 140px;
 	margin-bottom: 10px;
 }
@@ -251,6 +283,7 @@ h2 {
 .container.versus-cont .player.player-1 {
 	margin-bottom: unset;
 	border-right: unset;
+	margin: 0 10px 0 0;
 }
 
 .container.versus-cont .player.player-1 img {
@@ -258,7 +291,7 @@ h2 {
 }
 
 .container.versus-cont .player.player-1 img.winnerArray1 {
-	animation: ani-battle1-winner 2s forwards;
+	animation: ani-battle1-winner 2s infinite;
 }
 
 .container.versus-cont .player.player-2 {
@@ -270,7 +303,7 @@ h2 {
 }
 
 .container.versus-cont .player.player-2 img.winnerArray1 {
-	animation: ani-battle2-winner 2s forwards;
+	animation: ani-battle2-winner 2s infinite;
 }
 
 .player {
@@ -285,9 +318,17 @@ h2 {
 	margin-bottom: 10px;
 }
 
+.player.player-1 h3 {
+	color: #ff0059;
+}
+
 .player.player-2 {
 	order: 1;
 	margin-top: 10px;
+}
+
+.player.player-2 h3 {
+	color: #009cff;
 }
 
 .player h3 {
@@ -306,6 +347,14 @@ h2 {
 .player li img {
 	width: 100%;
 	border-radius: 5px;
+}
+
+.player li .explosion {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background: url(../../dist/img/explosion.png);
+	animation: ani-explode 1s steps(6) infinite;
 }
 
 .player, blockquote {
@@ -349,6 +398,10 @@ blockquote a {
 	text-decoration: none;
 }
 
+blockquote span {
+	color: #fff;
+}
+
 .bottom {
 	width: 100%;
 	max-width: 328px;
@@ -361,6 +414,7 @@ blockquote a {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
+	margin: 20px 0;
 }
 
 .bottom ul li {
@@ -466,45 +520,33 @@ audio {
 	}
 }
 
-@keyframes ani-battle1 {
-	0% {
-		transform: translateX(-100%);
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(0%);
-		opacity: 0;
-	}
-}
-
-@keyframes ani-battle2 {
-	0% {
-		transform: translateX(100%);
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(0%);
-		opacity: 0;
-	}
-}
-
 @keyframes ani-battle1-winner {
 	0% {
-		transform: translateX(-100%);
-		opacity: 1;
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #ff0059;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px #ff0059;
 	}
 	100% {
-		transform: translateX(0%);
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #ff0059;
 	}
 }
 
 @keyframes ani-battle2-winner {
 	0% {
-		transform: translateX(100%);
-		opacity: 1;
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #009cff;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px  #009cff;
 	}
 	100% {
-		transform: translateX(0%);
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #009cff;
 	}
 }
 

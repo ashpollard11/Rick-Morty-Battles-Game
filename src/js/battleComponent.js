@@ -4,8 +4,9 @@ let BattleComponent = Vue.component("battle", {
 	props: ["characters"],
 	template: 
 		`<div class="battle-cont container" ref="container">
-			<blockquote v-if="selectingPlayer && count <=7">
-				Player {{selectingPlayer}}, Select A Character
+			<blockquote v-if="selectingPlayer && count <=7" v-bind:style="{ color: activeColor }">
+				Player {{selectingPlayer}}, 
+				<span>Select A Character</span>
 			</blockquote>
 			<blockquote v-else-if="selectingPlayer && count === 8" class="is-active">
 				<router-link to="/versus">Ready To Battle?</router-link>
@@ -51,7 +52,8 @@ let BattleComponent = Vue.component("battle", {
 			previewCharacter: null,
 			player1: [],
 			player2: [],
-			selectingPlayer: 1
+			selectingPlayer: 1,
+			activeColor: '#ff0059'
 		}
 	},
 	computed: {
@@ -91,8 +93,10 @@ let BattleComponent = Vue.component("battle", {
 		playerSelect: function() {
 			if (this.count % 2) {
 				this.selectingPlayer = 2
+				this.activeColor = "#009cff"
 			} else {
 				this.selectingPlayer = 1
+				this.activeColor = "#ff0059"
 			}
 			console.log(this.count);
 			

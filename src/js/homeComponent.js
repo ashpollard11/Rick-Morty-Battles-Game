@@ -5,8 +5,8 @@ let HomeComponent = Vue.component("home", {
 			<div class="overlay"></div>
 			<section>
 				<h1>Rick &amp; Morty Team Battles</h1>
-				<h2>Pick a team of characters and put them to the test!</h2>
-				<h2>Battle friends and win!</h2>
+				<h2>Pick a team of 4 characters and put them to the test!</h2>
+				<h2>Watch the teams face off!</h2>
 
 				<router-link to="/battle" class="go">GO!</router-link>
 			</section>

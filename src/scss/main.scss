@@ -68,7 +68,37 @@ body {
 			.bottom {
 				max-width: 442px;
 			}
+
+			&.versus-cont {
+	
+				.versus-inner-cont {
+					padding-bottom: 20px;
+				}
+	
+				h1 {
+					max-width: unset;
+				}
+	
+				.player {
+		
+		
+					ul {
+		
+						li {
+							width: 47%;
+						}
+					}
+				}
+	
+				.go {
+					width: 70%;
+					top: 7%;
+				}
+			}
 		}
+
+		
+
 	}
 
 	@include bp-desktop {
@@ -109,10 +139,16 @@ h2 {
 
 /* 2. Content ================================= */
 
-
+#app {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .container {
 	width: 100%;
+	max-width: 1620px;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -183,7 +219,18 @@ h2 {
 	&.versus-cont {
 		background-color: rgba(0,0,0,0.9);
 		flex-direction: row;
-		align-items: flex-end;
+		//align-items: flex-end;
+
+		.versus-inner-cont {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-items: flex-end;
+			width: 100%;
+			max-height: 708px;
+			min-height: 708px;
+			position: relative;
+		}
 
 		h1, .go {
 			position: absolute;
@@ -191,16 +238,17 @@ h2 {
 		}
 
 		h1 {
-			top: 5%;
+			top: 0%;
 			opacity: 0;
 			animation: ani-opacity 2.5s forwards;
 			animation-delay: 1.2s;
 			font-size: 50px;
+			max-width: 345px;
 		}
 
 		.go {
 			top: 15%;
-			width: 60%;
+			width: 70%;
 			max-width: 283px;
 			padding-top: 16px;
 			opacity: 0;
@@ -222,10 +270,10 @@ h2 {
 				transform: unset;
 
 				li {
-					width: 47%;
+					width: 43%;
 
 					img {
-						width: 196%;
+						width: 180%;
 						max-width: 140px;
 						margin-bottom: 10px;
 
@@ -236,12 +284,13 @@ h2 {
 			&.player-1 {
 				margin-bottom: unset;
 				border-right: unset;
+				margin: 0 10px 0 0;
 
 				img {
 					animation: ani-battle1 2s forwards;
 
 					&.winnerArray1 {
-						animation: ani-battle1-winner 2s forwards;
+						animation: ani-battle1-winner 2s infinite;
 					}
 				}
 			}
@@ -253,7 +302,7 @@ h2 {
 					animation: ani-battle2 2s forwards;
 
 					&.winnerArray1 {
-						animation: ani-battle2-winner 2s forwards;
+						animation: ani-battle2-winner 2s infinite;
 					}
 				}
 			}
@@ -270,11 +319,19 @@ h2 {
 	&.player-1 {
 		order: -1;
 		margin-bottom: 10px;
+
+		h3 {
+			color: #ff0059;
+		}
 	}
 
 	&.player-2 {
 		order: 1;
 		margin-top: 10px;
+
+		h3 {
+			color: #009cff;
+		}
 	}
 
 	h3 {
@@ -292,6 +349,14 @@ h2 {
 		img {
 			width: 100%;
 			border-radius: 5px;
+		}
+
+		.explosion {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			background: url(../../dist/img/explosion.png);
+			animation: ani-explode 1s steps(6) infinite,
 		}
 	}
 }
@@ -333,6 +398,10 @@ blockquote {
 		color: #fff;
 		text-decoration: none;
 	}
+
+	span {
+		color: #fff;
+	}
 }
 
 .bottom {
@@ -346,6 +415,7 @@ blockquote {
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
+		margin: 20px 0;
 
 		li {
 			width: 18%;
@@ -439,31 +509,25 @@ audio {
   100% { background-color: rgba(58, 203, 33, 1); box-shadow: 0 0 3px #00b281; }
 }
 
-
-@keyframes ani-battle1 {
-	0% { transform: translateX(-100%); opacity: 1; }
-	100% { transform: translateX(0%); opacity: 0; }
-}
-
-@keyframes ani-battle2 {
-	0% { transform: translateX(100%); opacity: 1; }
-	100% { transform: translateX(0%); opacity: 0; }
-}
-
 @keyframes ani-battle1-winner {
-	0% { transform: translateX(-100%); opacity: 1; }
-	100% { transform: translateX(0%); }
+	0% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 3px #ff0059; }
+	50% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 40px #ff0059; }
+	100% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 3px #ff0059; }
+	// 0% { transform: translateX(-100%); opacity: 1; }
+	// 100% { transform: translateX(0%); }
 }
 
 @keyframes ani-battle2-winner {
-	0% { transform: translateX(100%); opacity: 1; }
-	100% { transform: translateX(0%); }
+	0% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 3px #009cff; }
+	50% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 40px  #009cff; }
+	100% { background-color: rgba(0, 0, 0, 0.8); box-shadow: 0 0 3px #009cff; }
+	// 0% { transform: translateX(100%); opacity: 1; }
+	// 100% { transform: translateX(0%); }
 }
 
 @keyframes ani-opacity {
 	100% { opacity: 1 }
 }
-
 
 
 
