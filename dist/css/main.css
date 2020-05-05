@@ -194,7 +194,8 @@ h2 {
 }
 
 .container.home-cont section {
-	animation: ani-glow 1.5s infinite;
+	-webkit-animation: ani-glow 1.5s infinite;
+	        animation: ani-glow 1.5s infinite;
 	width: 90%;
 	max-width: 545px;
 	padding: 1em;
@@ -239,8 +240,10 @@ h2 {
 .container.versus-cont h1 {
 	top: 0%;
 	opacity: 0;
-	animation: ani-opacity 2.5s forwards;
-	animation-delay: 1.2s;
+	-webkit-animation: ani-opacity 2.5s forwards;
+	        animation: ani-opacity 2.5s forwards;
+	-webkit-animation-delay: 1.2s;
+	        animation-delay: 1.2s;
 	font-size: 50px;
 	max-width: 345px;
 }
@@ -251,8 +254,10 @@ h2 {
 	max-width: 283px;
 	padding-top: 16px;
 	opacity: 0;
-	animation: ani-opacity 2.5s forwards;
-	animation-delay: 2.5s;
+	-webkit-animation: ani-opacity 2.5s forwards;
+	        animation: ani-opacity 2.5s forwards;
+	-webkit-animation-delay: 2.5s;
+	        animation-delay: 2.5s;
 }
 
 .container.versus-cont .player {
@@ -267,7 +272,9 @@ h2 {
 .container.versus-cont .player ul {
 	display: flex;
 	flex-direction: column;
-	transform: unset;
+	-webkit-transform: unset;
+	    -ms-transform: unset;
+	        transform: unset;
 }
 
 .container.versus-cont .player ul li {
@@ -287,11 +294,13 @@ h2 {
 }
 
 .container.versus-cont .player.player-1 img {
-	animation: ani-battle1 2s forwards;
+	-webkit-animation: ani-battle1 2s forwards;
+	        animation: ani-battle1 2s forwards;
 }
 
 .container.versus-cont .player.player-1 img.winnerArray1 {
-	animation: ani-battle1-winner 2s infinite;
+	-webkit-animation: ani-battle1-winner 2s infinite;
+	        animation: ani-battle1-winner 2s infinite;
 }
 
 .container.versus-cont .player.player-2 {
@@ -299,11 +308,13 @@ h2 {
 }
 
 .container.versus-cont .player.player-2 img {
-	animation: ani-battle2 2s forwards;
+	-webkit-animation: ani-battle2 2s forwards;
+	        animation: ani-battle2 2s forwards;
 }
 
 .container.versus-cont .player.player-2 img.winnerArray1 {
-	animation: ani-battle2-winner 2s infinite;
+	-webkit-animation: ani-battle2-winner 2s infinite;
+	        animation: ani-battle2-winner 2s infinite;
 }
 
 .player {
@@ -354,7 +365,8 @@ h2 {
 	width: 200px;
 	height: 200px;
 	background: url(../../dist/img/explosion.png);
-	animation: ani-explode 1s steps(6) infinite;
+	-webkit-animation: ani-explode 1s steps(6) infinite;
+	        animation: ani-explode 1s steps(6) infinite;
 }
 
 .player, blockquote {
@@ -369,14 +381,16 @@ blockquote {
 	font-size: 20px;
 	margin-bottom: 15px;
 	border-radius: 10px;
-	animation: ani-glow 1.5s infinite;
+	-webkit-animation: ani-glow 1.5s infinite;
+	        animation: ani-glow 1.5s infinite;
 	text-align: center;
 	transition: 0.4s;
 }
 
 blockquote.is-active {
 	cursor: pointer;
-	animation: ani-glow-active 1.5s infinite;
+	-webkit-animation: ani-glow-active 1.5s infinite;
+	        animation: ani-glow-active 1.5s infinite;
 	font-size: 50px;
 	padding: 1.3em;
 	position: absolute;
@@ -429,14 +443,17 @@ blockquote span {
 .bottom ul img {
 	width: 100%;
 	max-height: 86px;
-	object-fit: cover;
+	-o-object-fit: cover;
+	   object-fit: cover;
 	cursor: pointer;
 	transition: 0.3s;
 	border-radius: 5px;
 }
 
 .bottom ul img:hover {
-	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	    -ms-transform: scale(1.2);
+	        transform: scale(1.2);
 	box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
 }
 
@@ -444,8 +461,7 @@ blockquote span {
 	position: absolute;
 	width: 70%;
 	max-width: 280px;
-	background: rgba(0, 0, 0, 0.8);
-	border: double 4px rgba(0, 0, 0, 0.9);
+	background: rgba(0, 0, 0, 0.95);
 	padding: 0.8em;
 	display: flex;
 	flex-direction: column;
@@ -462,7 +478,8 @@ blockquote span {
 
 .modal img {
 	width: 68%;
-	object-fit: cover;
+	-o-object-fit: cover;
+	   object-fit: cover;
 	border-radius: 3px;
 	margin-bottom: 10px;
 }
@@ -490,6 +507,21 @@ audio {
 	visibility: hidden;
 }
 
+@-webkit-keyframes ani-glow {
+	0% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #00b281;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px #6ecd00;
+	}
+	100% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #00b281;
+	}
+}
+
 @keyframes ani-glow {
 	0% {
 		background-color: rgba(0, 0, 0, 0.8);
@@ -501,6 +533,21 @@ audio {
 	}
 	100% {
 		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #00b281;
+	}
+}
+
+@-webkit-keyframes ani-glow-active {
+	0% {
+		background-color: #3acb21;
+		box-shadow: 0 0 3px #00b281;
+	}
+	50% {
+		background-color: #3acb21;
+		box-shadow: 0 0 40px #6ecd00;
+	}
+	100% {
+		background-color: #3acb21;
 		box-shadow: 0 0 3px #00b281;
 	}
 }
@@ -520,6 +567,21 @@ audio {
 	}
 }
 
+@-webkit-keyframes ani-battle1-winner {
+	0% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #ff0059;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px #ff0059;
+	}
+	100% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #ff0059;
+	}
+}
+
 @keyframes ani-battle1-winner {
 	0% {
 		background-color: rgba(0, 0, 0, 0.8);
@@ -535,6 +597,21 @@ audio {
 	}
 }
 
+@-webkit-keyframes ani-battle2-winner {
+	0% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #009cff;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 40px  #009cff;
+	}
+	100% {
+		background-color: rgba(0, 0, 0, 0.8);
+		box-shadow: 0 0 3px #009cff;
+	}
+}
+
 @keyframes ani-battle2-winner {
 	0% {
 		background-color: rgba(0, 0, 0, 0.8);
@@ -547,6 +624,12 @@ audio {
 	100% {
 		background-color: rgba(0, 0, 0, 0.8);
 		box-shadow: 0 0 3px #009cff;
+	}
+}
+
+@-webkit-keyframes ani-opacity {
+	100% {
+		opacity: 1;
 	}
 }
 

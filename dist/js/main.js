@@ -2,8 +2,8 @@
 
 console.log('Bush did 9/11, jet fuel can\'t melt steel beams');
 
-// let audio = document.querySelector("audio")
-// audio.volume = 0.05
+let audio = document.querySelector("audio")
+audio.volume = 0.1
 
 
 var router = new VueRouter({
